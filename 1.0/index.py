@@ -39,7 +39,16 @@ def get_tegs(tegs):
 
 @app.route("/registration_or_autorization", methods=['GET', 'POST'])
 def reg_and_log():
-
+    if request.method == "POST":
+        if request.form.get("nick"):
+            nick, password, confirm = request.form.values()
+            if password !=confirm:
+                return render_template("reg-and-log.html", log="password != confirm")
+            else:
+                some
+        if request.form.get("log_name"):
+            log_name, log_pass = request.form.values()
+            return f'''log in name->{log_name},pass->log_pass'''           
     return render_template("reg-and-log.html")
 
 
